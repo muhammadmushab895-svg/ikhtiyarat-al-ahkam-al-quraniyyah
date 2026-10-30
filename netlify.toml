@@ -1,0 +1,20 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/api/turath/page"
+  to = "https://api.turath.io/page"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/turath/book_info"
+  to = "https://api.turath.io/book_info"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, OPTIONS"
