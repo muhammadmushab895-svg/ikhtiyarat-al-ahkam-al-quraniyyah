@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جامع الاختيارات الفقهية المؤسسة على عموم القرآن</title>
+  <meta name="description" content="الموسوعة المقارنة الكبرى للاختيارات الفقهية والأصولية المستندة إلى دلالات الألفاظ والسياق القرآني">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      
+      <!-- Logo and App Title -->
+      <div class="logo-area">
+        <div class="logo-icon">
+          <!-- Elegant Islamic Dome / Book Vector -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>جامع الاختيارات الفقهية المؤسسة على عموم القرآن</h1>
+          <p>الموسوعة المقارنة الكبرى المستندة إلى دلالات الألفاظ والسياق القرآني وتوثيقات منصة تراث</p>
+        </div>
+      </div>
+
+      <!-- Quick Search Input -->
+      <div class="search-box-wrapper">
+        <span class="search-icon">
+          <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </span>
+        <input type="text" id="searchInput" class="search-input" placeholder="ابحث في الآيات، أو أسماء العلماء، أو المسائل، أو نصوص التراث...">
+      </div>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <!-- Turath Live Search Button -->
+        <button class="btn btn-gold" id="openTurathSearchModal" title="البحث المباشر في خوادم منصة تراث">
+          <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+          <span>مستكشف تراث المباشر</span>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button class="btn" id="themeToggleBtn" title="التبديل بين المظهر الملكي ومظهر المخطوط العتيق">
+          <span>🌙 المظهر الملكي الداكن</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Filter & Submenu Bar -->
+  <nav class="filter-bar">
+    <div class="filter-container">
+      <!-- Category Chips -->
+      <div class="category-chips" id="categoryChips">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- School Dropdown Filter -->
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-family:var(--ui-font); font-size:0.85rem; color:var(--text-muted);">المذهب / المدرسة:</span>
+        <select id="schoolFilterSelect" class="schools-filter-select">
+          <!-- Injected via JavaScript -->
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Three-Panel Application Canvas -->
+  <main class="main-wrapper">
+    
+    <!-- Panel 1: Left Issues Navigator -->
+    <aside class="issues-sidebar">
+      <div class="panel-header">
+        <span>فهرس المسائل المحققة</span>
+        <span class="issues-count-badge" id="issuesCountBadge">50 مسألة فقهية مقررة</span>
+      </div>
+      <div class="issues-scroll-list" id="issuesList">
+        <!-- Injected via JavaScript -->
+      </div>
+    </aside>
+
+    <!-- Panel 2: Center Active Issue Analysis -->
+    <section class="issue-detail-panel">
+      <!-- Quran Box -->
+      <div id="quranBoxContainer"></div>
+
+      <!-- Problem Statement & Summary -->
+      <div id="issueSummaryContainer"></div>
+
+      <!-- Dalalah Analysis (Lughawiyyah & Siyaqiyyah) -->
+      <div id="dalalahContainer"></div>
+
+      <!-- Comparative Scholars Map -->
+      <div id="scholarsContainer"></div>
+    </section>
+
+    <!-- Panel 3: Right Turath Citations & References -->
+    <aside class="citations-sidebar">
+      <div class="panel-header" style="background:var(--bg-card); padding:14px; border-radius:12px; border:1px solid var(--border-color);">
+        <span>خزانة نصوص التراث والتوثيقات</span>
+        <span style="font-size:0.78rem; color:var(--text-emerald);">أوفلاين من Turath API</span>
+      </div>
+      <div id="citationsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Modal: Live Turath API Search -->
+  <div class="modal-overlay" id="turathModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.4rem;">📖</span>
+          <h3 style="font-family:var(--ui-font); color:var(--text-gold); font-size:1.15rem;">مستكشف نصوص تراث المباشر (Turath API Explorer)</h3>
+        </div>
+        <button class="btn" id="closeModalBtn" style="padding:4px 10px; font-size:1.1rem;">✕</button>
+      </div>
+      
+      <div class="modal-body">
+        <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:14px;">
+          يمكنك البحث في ملايين الصفحات من أمهات كتب الفقه والحديث والتفسير مباشرة عبر واجهة برمجة تطبيقات تراث (Turath API) لجمع نصوص إضافية وضمها إلى مكتبتك.
+        </p>
+        
+        <div style="display:flex; gap:10px; margin-bottom:18px;">
+          <input type="text" id="liveSearchInput" class="search-input" placeholder="اكتب عبارة فقهية، مثلاً: الزيادة على النص نسخ، أو اسم كتاب...">
+          <button class="btn btn-gold" id="liveSearchBtn" style="flex-shrink:0;">بحث في تراث 🔎</button>
+        </div>
+
+        <div id="turathLiveResults" style="max-height: 450px; overflow-y: auto;">
+          <div style="text-align:center; padding: 40px; color:var(--text-muted);">
+            اكتب العبارة واضغط «بحث في تراث» لعرض النصوص والصفحات والأجزاء مباشرة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: In-App Turath Page Reader (قارئ نصوص تراث المدمج) -->
+  <div class="modal-overlay" id="turathReaderModal">
+    <div class="reader-modal-content">
+      
+      <!-- Reader Header -->
+      <div class="reader-header">
+        <div class="reader-book-info">
+          <div class="reader-book-icon">📖</div>
+          <div>
+            <div class="reader-meta-title" id="readerBookTitle">اسم الكتاب</div>
+            <div class="reader-meta-author" id="readerBookAuthor">المؤلف وتاريخ الوفاة</div>
+          </div>
+        </div>
+
+        <div class="reader-controls">
+          <!-- Page Navigation Control (التنقل بين الصفحات والرجوع للأمام والخلف) -->
+          <div class="reader-page-nav-bar">
+            <button class="reader-nav-btn" id="readerPrevPageBtn" title="الرجوع إلى الصفحة السابقة">
+              › السابقة
+            </button>
+            <div class="reader-page-input-wrapper">
+              <span>ص:</span>
+              <input type="number" id="readerPageInput" class="reader-page-input" min="1" title="اكتب رقم الصفحة واضغط Enter للانتقال السريع">
+            </div>
+            <button class="reader-nav-btn" id="readerNextPageBtn" title="الاستمرار إلى الصفحة التالية">
+              التالية ‹
+            </button>
+          </div>
+
+          <span class="reader-location-pill" id="readerLocationPill">الجزء 1 • الصفحة 1</span>
+          
+          <!-- Font Size Zoom Controls -->
+          <button class="btn" id="readerZoomOutBtn" title="تصغير حجم الخط" style="padding:4px 10px; font-weight:bold;">A-</button>
+          <button class="btn" id="readerZoomResetBtn" title="إعادة تعيين حجم الخط" style="padding:4px 10px;">A</button>
+          <button class="btn" id="readerZoomInBtn" title="تكبير حجم الخط" style="padding:4px 10px; font-weight:bold;">A+</button>
+          
+          <!-- Copy Page Text -->
+          <button class="btn btn-gold" id="readerCopyPageBtn" title="نسخ كامل نص الصفحة مع التوثيق">
+            📋 نسخ النص
+          </button>
+
+          <!-- Live Turath Verification Button -->
+          <button class="btn" id="readerVerifyBtn" title="الاتصال المباشر بخادم تراث ومطابقة النص الحي أونلاين" style="border-color:var(--text-emerald); color:var(--text-emerald);">
+            🔄 مطابقة أونلاين بـ Turath
+          </button>
+
+          <!-- Close Modal -->
+          <button class="btn" id="closeReaderModalBtn" style="padding:4px 12px; font-size:1.1rem;">✕</button>
+        </div>
+      </div>
+
+      <!-- TOC Breadcrumbs from Turath -->
+      <div class="reader-breadcrumbs" id="readerBreadcrumbs">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Live Verification Status Notification -->
+      <div id="readerVerifyStatus" style="padding: 0 24px; display: none;"></div>
+
+      <!-- Reader Scrollable Body -->
+      <div class="reader-body" id="readerBodyScroll">
+        <div class="reader-page-text" id="readerPageText">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Bottom Context Navigator (التنقل السفلي لقراءة الكتاب كاملاً ومواصلة السياق) -->
+        <div class="reader-bottom-nav">
+          <button class="btn-bottom-page-nav" id="readerBottomPrevBtn">
+            <span>› الصفحة السابقة في الكتاب</span>
+          </button>
+          <span style="color:var(--text-muted); font-size:0.9rem;">
+            استمر في تتبع سياق كلام المصنف دون انقطاع
+          </span>
+          <button class="btn-bottom-page-nav" id="readerBottomNextBtn">
+            <span>الصفحة التالية في الكتاب ‹</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reader Footer -->
+      <div class="reader-footer">
+        <span style="color:var(--text-muted);">
+          مستخرج مباشرة من منصة تراث الرقمية • صفحة محققة
+        </span>
+        <span style="color:var(--text-emerald); font-weight:600;" id="readerCharsCount">
+          0 حرف
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Core Scripts -->
+  <script src="database.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

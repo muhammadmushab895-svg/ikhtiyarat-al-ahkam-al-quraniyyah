@@ -1,0 +1,23 @@
+{
+  "name": "ikhtiyarat-quran-app",
+  "version": "1.0.0",
+  "description": "موسوعة اختيارات الأحكام القرآنية ونصوص الفقه المقارن الموثقة من التراث الإسلامي",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node audit_entire_database.js"
+  },
+  "keywords": [
+    "quran",
+    "ahkam",
+    "fiqh",
+    "turath",
+    "islamic-law",
+    "quranic-studies"
+  ],
+  "author": "Muhammad Mushab",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

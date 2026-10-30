@@ -1,0 +1,37 @@
+# Dependency and runtime
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large offline dumps and binary caches (unabridged books are proxied online via Turath API in cloud)
+books/
+data-v4.sqlite
+
+# Scratch analysis and migration scripts
+audit_analysis.*
+audit_summary.txt
+audit_report.json
+fast_audit.json
+all_50_issues_summary.txt
+check_*.js
+extract_*.js
+find_*.js
+inject_*.js
+inspect_*.js
+search_*.js
+test_*.js
+apply_*.js
+finalize_*.js
+refine_*.js
+download_*.js
+fix_*.js
+list_*.js
+rebuild_*.js
+audit_all_50_issues_full.js
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
